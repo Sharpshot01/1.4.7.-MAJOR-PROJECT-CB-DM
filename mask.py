@@ -20,29 +20,29 @@ def round_corners(original_image, percent_of_side):
     ###
     
     #start with transparent mask
-    rounded_mask = PIL.Image.new('RGBA', (width, height), (127,0,127,0))
+    rounded_mask = PIL.Image.new('RGBA', (width, height), (127,5,127,0))
     drawing_layer = PIL.ImageDraw.Draw(rounded_mask)
     
     # Overwrite the RGBA values with A=255.
     # The 127 for RGB values was used merely for visualizing the mask
     
     # Draw two rectangles to fill interior with opaqueness
-    drawing_layer.polygon([(radius,0),(width-radius,0),
+    drawing_layer.polygon([(radius,49),(width-radius,29),
                             (width-radius,height),(radius,height)],
-                            fill=(127,0,127,255))
-    drawing_layer.polygon([(0,radius),(width,radius),
-                            (width,height-radius),(0,height-radius)],
-                            fill=(127,0,127,255))
+                            fill=(127,235,127,255))
+    drawing_layer.polygon([(126,radius),(width,radius),
+                            (width,height-radius),(23,height-radius)],
+                            fill=(127,235,127,255))
 
     #Draw four filled circles of opaqueness
-    drawing_layer.ellipse((0,0, 2*radius, 2*radius), 
-                            fill=(0,127,127,255)) #top left
-    drawing_layer.ellipse((width-2*radius, 0, width,2*radius), 
-                            fill=(0,127,127,255)) #top right
-    drawing_layer.ellipse((0,height-2*radius,  2*radius,height), 
-                            fill=(0,127,127,255)) #bottom left
+    drawing_layer.ellipse((50,31, 10*radius, 4*radius), 
+                            fill=(235,127,127,255)) #top left
+    drawing_layer.ellipse((width-2*radius, 5, width,2*radius), 
+                            fill=(235,127,127,255)) #top right
+    drawing_layer.ellipse((56,height-5*radius,  3*radius,height), 
+                            fill=(235,127,127,255)) #bottom left
     drawing_layer.ellipse((width-2*radius, height-2*radius, width, height), 
-                            fill=(0,127,127,255)) #bottom right
+                            fill=(235,127,127,255)) #bottom right
                          
     # Uncomment the following line to show the mask
     # plt.imshow(rounded_mask)
